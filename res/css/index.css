@@ -1,0 +1,97 @@
+body {font-family: "Raleway", sans-serif}
+h1 {font-family: "Raleway", sans-serif}
+body {height: 100%}
+html {height: 100%}
+.bgimg {
+    background-image: url(../images/bgimage.jpg);
+    min-height: 100%;
+    background-position: center;
+    background-size: cover;
+}
+.nowrap {
+    white-space: nowrap;
+}
+.america {
+    height: auto;
+    width: auto;
+    max-height: 370px;
+    max-width: 370px;
+    position: absolute;
+    bottom: 200px;
+    right: 450px;
+}
+.china { 
+    height: auto;
+    width: auto;
+    max-height: 500px;
+    max-width: 500px;
+    position: relative;
+    top: -120px; 
+    right: -370px;
+
+
+}
+.angola { 
+    height: auto;
+    width: auto;
+    max-height: 270px;
+    max-width: 270px;
+    position: absolute;
+    bottom: -10px;
+    right: -10px;
+}
+.bolivia { 
+    height: auto;
+    width: auto;
+    max-height: 270px;
+    max-width: 270px;
+    position: absolute;
+    bottom: -100px;
+    right: 400px;
+}
+/* .russia { 
+    height: auto;
+    width: auto;
+    max-height: 50px;
+    max-width: 50px;
+    position: absolute;
+}*/
+
+.australia { 
+    height: auto;
+    width: auto;
+    max-height: 165px;
+    max-width: 165px;
+    position: absolute;
+    right: -300px;
+    bottom: -10px;
+}
+.sweden { 
+    height: auto;
+    width: auto;
+    max-height: 180px;
+    max-width: 180px;
+    position: absolute;
+    top:-46px;
+    right:72px;
+}
+.male {
+    height: auto;
+    width: auto;
+    max-height: 50px;
+    max-width: 50px;
+    position: absolute;
+    right: 100px;
+}
+.female {
+    height: auto;
+    width: auto;
+    max-height: 50px;
+    max-width: 50px;
+    position: absolute;
+    left: 100px;
+    top: -5px;
+}
+.continue { 
+    background-color: #4CAF50;
+}

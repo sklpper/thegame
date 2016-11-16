@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1">
+        <title>Welcome to the Game</title>
+        <link rel="stylesheet" href="res/css/w3.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+        <link rel="stylesheet" href="res/css/index.css">
+        
+        <script>
+            var pageCounter = 0;
+            var pageTitles = ["Getting Started", "Select Country", "Select Gender" ];
+            var selectedCountry = 0;
+            var selectedGender = 0;
+            var age = 1;
+            var order = [""]
+            var container = [americaDetailsM, americaDetailsF, chinaDetailsM, chinaDetailsF,
+            angolaDetailsM, angolaDetailsF, boliviaDetailsM, boliviaDetailsF, russiaDetailsM,
+            russiaDetailsF, australiaDetailsM, australiaDetailsF, swedenDetailsM, swedenDetailsF
+            ]
+            //america -> sweden
+            //order: infant mortality, death rate, life expectancy, marriage age
+            //under 5 mortality rate,
+            var data = [
+                [[6, 8, 77, 29, 7], [5, 8, 82, 26, 7]],
+                [[12, 8, 74, 26, 11], [12, 8, 78, 24, 11]],
+                [[8, 11, 55, 25, 157], [73, 11, 57, 21, 157]],
+                [[40, 7, 66, 24, 38], [33, 7, 72, 22, 38]],
+                [[8, 14, 65, 27, 10], [6, 14, 77, 25, 10]],
+                [[5, 7, 80, 32, 4], [4, 7, 85, 30, 4]],
+                [[3, 9, 80, 36, 3], [2, 9, 84, 33, 3]]
+            ];
+            
+            var america = [americaDetailsM, americaDetailsF];
+            var china = [chinaDetailsM, chinaDetailsF];
+            var angola = [angolaDetailsM, angolaDetailsF];
+            var bolivia = [boliviaDetailsM, boliviaDetailsF];
+            var russia = [russiaDetailsM, russiaDetailsF];
+            var australia = [australiaDetailsM, australiaDetailsF];
+            var sweden = [swedenDetailsM, swedenDetailsF];
+
+            //order infant mortality, death rate, life expectancy, marriage age
+            var americaDetailsM = [6, 8, 77, 29];
+            var americaDetailsF = [5, 8, 82, 26];
+            var chinaDetailsM = [12, 8, 74, 26];
+            var chinaDetailsF = [12, 8, 78, 24];
+            var angolaDetailsM = [80, 11, 55, 25];
+            var angolaDetailsF = [73, 11, 57, 21];
+            var boliviaDetailsM = [40, 7, 66, 24];
+            var boliviaDetailsF = [33, 7, 72, 22];
+            var russiaDetailsM = [8, 14, 65, 27];
+            var russiaDetailsF = [6, 14, 77, 25];
+            var australiaDetailsM = [5, 7, 80, 32];
+            var australiaDetailsF = [4, 7, 85, 30];
+            var swedenDetailsM = [3, 9, 80, 36];
+            var swedenDetailsF = [2, 9, 84, 33];
+            
+            
+            function startGame() {
+                document.getElementById("main").style.display = 'none';
+                document.getElementById("page2").style.display = '';
+            }
+            
+            function chooseCountry(country) {
+                document.getElementById("page2").style.display = 'none';
+                selectedCountry = country;
+                document.getElementById("page3").style.display = '';
+            }
+            
+            function chooseGender(gender) {
+                document.getElementById("page3").style.display = 'none';
+                selectedGender = gender;
+                document.getElementById("page4").style.display = '';
+            }
+            
+            function passTime() {
+                if (age >= 5) {
+                    document.getElementById("passTime5x").style.display = '';
+                }
+                document.getElementById("ageDesc").innerHTML = age;
+                mortality(data[selectedCountry][selectedGender]);
+                
+
+                
+                age++;
+            }
+            
+            function passTime5x() {
+                passTime();
+                passTime();
+                passTime();
+                passTime();
+                passTime();
+            }
+            
+            function mortality(list) {
+                if(Math.floor(Math.random()*30000) <= 5) {
+                    die("unnaturalDeath");
+                }
+                switch(true) {
+                    case (age == 1):
+                        if(Math.floor(Math.random()*1000) <= list[0]) {
+                            die("infant mortality");
+                        }
+                        break;
+                    
+                    case (age <= 5):
+                        if(Math.floor(Math.random()*1000) <= list[4]) {
+                            die("child mortality");
+                        }
+                        break;
+                        
+                    //life expectancy * 1/4
+                    case (age < list[2] / 4):
+                        if(Math.floor(Math.random()*100000) <= 17) {
+                            die("death before 1/4 life expectancy");
+                        }
+                        break;
+                        
+                    case (age < (list[2] / 4) + 10):
+                        if(Math.floor(Math.random()*100000) <= 80) {
+                            die("death before 1/4 life expectancy + 10");
+                        }
+                        break;
+                        
+                    //life expectancy * 1/2
+                    case (age < (list[2] / 2)):
+                        if(Math.floor(Math.random()*100000) <= 101) {
+                            die("death before 1/2 life expectancy");
+                        }
+                        
+                        break;
+                        
+                    case (age < (list[2] / 2) + 10):
+                        if(Math.floor(Math.random()*100000) <= 192) {
+                            die("death before 1/2 life expectancy + 10");
+                        }
+                        
+                        break;
+                        
+                    //life expectancy * 3/4
+                    case (age < (list[2] * 3 / 4)):
+                        if(Math.floor(Math.random()*100000) <= 424) {
+                            die("death before 3/4 life expectancy");
+                        }
+                        
+                        break;
+                        
+                    case (age < (list[2] * 3 / 4) + 10):
+                        if(Math.floor(Math.random()*100000) <= 906) {
+                            die("death before 3/4 life expectancy + 10");
+                        }
+                        
+                        break;
+                    
+                    //life expectancy
+                    case (age < (list[2])):
+                        if(Math.floor(Math.random()*100000) <= 2166) {
+                            die("death die at life expectancy");
+                        }
+                        break;
+                    
+                    case (age < (list[2]) + 10):
+                        if(Math.floor(Math.random()*100000) <= 5291) {
+                            die("death die at life expectancy + 10");
+                        }
+                        
+                        break;
+                        
+                    case (age >= (list[2]) + 10):
+                        if(Math.floor(Math.random()*100000) <= 13896) {
+                            die("death die at life expectancy + 10");
+                        }
+                        break;
+                }
+            }
+            
+            function die(cause) {
+                document.getElementById("page4").style.display = 'none';
+                document.getElementById("passTime5x").style.display = 'none';
+                document.getElementById("page5").style.display = '';
+                document.getElementById("death").innerHTML = "\nYou succumbed to " + cause;
+                document.getElementById("deathDetails").innerHTML = "\nYou died at age " + age;
+
+            }
+            
+        </script>
+    </head>
+    
+    <body>
+        
+        <div class="bgimg w3-display-container w3-animate-opacity w3-text-white">
+            <div class="w3-display-topleft w3-padding-large w3-xlarge">
+                Hello
+            </div>
+            <div class="w3-display-middle" id="main">
+                <h1 class="w3-jumbo w3-animate-top nowrap">WELCOME TO THE GAME</h1>
+                <hr class="w3-border-grey" style="margin:auto;width:40%">
+                <p class="w3-large w3-center w3-animate-bottom"> <a href="javascript:startGame()">Click to begin. </a></p>
+                
+            </div>
+            
+            <div class="w3-display-middle" id="page2">
+                <a><img class="america" src="res/images/continents/na.png" onclick='chooseCountry(0)'/> </a><br/>
+                <a><img class="china" src="res/images/continents/asia.png" onclick='chooseCountry(1)'/></a><br/>
+                <a><img class="angola" src="res/images/continents/africa.png" onclick='chooseCountry(2)'/></a><br/>
+                <a><img class="bolivia" src="res/images/continents/sa.png" onclick='chooseCountry(3)'/></a><br/>
+                <!-- <a><img class="russia" src="res/images/placeholder1.jpg" onclick='chooseCountry(4)'/></a><br/> -->
+                <a><img class="australia" src="res/images/continents/aus.png" onclick='chooseCountry(5)'/></a><br/>
+                <a><img class="sweden" src="res/images/continents/eur.png" onclick='chooseCountry(6)'/></a>
+            </div>
+            
+            <div class="w3-display-middle" id="page3">
+                <a><img class="male" src="res/images/male.jpg" onclick='chooseGender(0)'/> </a><br/>
+                <a><img class="female" src="res/images/female.jpg" onclick='chooseGender(1)'/> </a>
+
+            </div>
+            
+            <div class="w3-display-middle" id="page4">
+                <div id="ageDesc">You were born <br></div>
+                <a href="javascript:passTime()"> Continue... </a>
+                <div id="passTime5x">
+                    <a href="javascript:passTime5x()"> Pass more time </a>
+                </div>
+                <div id="event1">Hello</div>
+                
+            </div>
+            
+            
+            <div class="w3-display-middle" id="page5">
+                You have died.
+                 <div id="death">cause <br></div>
+                 <div id="deathDetails"> </div>
+
+            </div>
+            
+            <div class="w3-display-bottomleft w3-padding-large">
+                An art project by <a href="http://google.com" target="_blank">esau kang</a>
+            </div>
+        </div>
+        
+        <script type="text/javascript">
+            document.getElementById("page2").style.display = 'none';
+            document.getElementById("page3").style.display = 'none';
+            document.getElementById("page4").style.display = 'none';
+            document.getElementById("page5").style.display = 'none';
+            document.getElementById("event1").style.display = 'none';
+            document.getElementById("passTime5x").style.display = 'none';
+        </script>
+        
+    </body>
+</html>
