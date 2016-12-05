@@ -3,10 +3,8 @@ h1 {font-family: "Raleway", sans-serif}
 body {height: 100%}
 html {height: 100%}
 .bgimg {
-    background-image: url(../images/bgimage.jpg);
+    background-color: #A9BCD0;
     min-height: 100%;
-    background-position: center;
-    background-size: cover;
 }
 .nowrap {
     white-space: nowrap;
