@@ -2,7 +2,7 @@
 <html lang="en">
     <head>
         <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1">
-        <title>Welcome to the Game</title>
+        <title>welcome to the game</title>
         <link rel="stylesheet" href="res/css/w3.css">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
@@ -15,11 +15,13 @@
             var selectedGender = 0;
             var age = 1;
             var order = [""]
-            var container = [americaDetailsM, americaDetailsF, chinaDetailsM, chinaDetailsF,
-            angolaDetailsM, angolaDetailsF, boliviaDetailsM, boliviaDetailsF, russiaDetailsM,
-            russiaDetailsF, australiaDetailsM, australiaDetailsF, swedenDetailsM, swedenDetailsF
-            ]
-            //america -> sweden
+
+            //america
+            //china
+            //angola
+            //bolivia
+            //australia
+            //sweden
             //order: infant mortality, death rate, life expectancy, marriage age
             //under 5 mortality rate,
             var data = [
@@ -32,45 +34,24 @@
                 [[3, 9, 80, 36, 3], [2, 9, 84, 33, 3]]
             ];
             
-            var america = [americaDetailsM, americaDetailsF];
-            var china = [chinaDetailsM, chinaDetailsF];
-            var angola = [angolaDetailsM, angolaDetailsF];
-            var bolivia = [boliviaDetailsM, boliviaDetailsF];
-            var russia = [russiaDetailsM, russiaDetailsF];
-            var australia = [australiaDetailsM, australiaDetailsF];
-            var sweden = [swedenDetailsM, swedenDetailsF];
-
-            //order infant mortality, death rate, life expectancy, marriage age
-            var americaDetailsM = [6, 8, 77, 29];
-            var americaDetailsF = [5, 8, 82, 26];
-            var chinaDetailsM = [12, 8, 74, 26];
-            var chinaDetailsF = [12, 8, 78, 24];
-            var angolaDetailsM = [80, 11, 55, 25];
-            var angolaDetailsF = [73, 11, 57, 21];
-            var boliviaDetailsM = [40, 7, 66, 24];
-            var boliviaDetailsF = [33, 7, 72, 22];
-            var russiaDetailsM = [8, 14, 65, 27];
-            var russiaDetailsF = [6, 14, 77, 25];
-            var australiaDetailsM = [5, 7, 80, 32];
-            var australiaDetailsF = [4, 7, 85, 30];
-            var swedenDetailsM = [3, 9, 80, 36];
-            var swedenDetailsF = [2, 9, 84, 33];
-            
             
             function startGame() {
                 document.getElementById("main").style.display = 'none';
+                document.body.style.backgroundColor="#9AD4D6";
                 document.getElementById("page2").style.display = '';
             }
             
             function chooseCountry(country) {
                 document.getElementById("page2").style.display = 'none';
                 selectedCountry = country;
+                document.body.style.backgroundColor="#A1C084";
                 document.getElementById("page3").style.display = '';
             }
             
             function chooseGender(gender) {
                 document.getElementById("page3").style.display = 'none';
                 selectedGender = gender;
+                document.body.style.backgroundColor="#F0E2A3";
                 document.getElementById("page4").style.display = '';
             }
             
@@ -96,45 +77,46 @@
             
             function mortality(list) {
                 if(Math.floor(Math.random()*30000) <= 5) {
-                    die("unnaturalDeath");
+                    die("unnatural death. unlucky");
                 }
                 switch(true) {
                     case (age == 1):
                         if(Math.floor(Math.random()*1000) <= list[0]) {
-                            die("infant mortality");
+                            die("infant mortality which affects nearly " + list[0] + " of every 1000 babies");
                         }
                         break;
                     
                     case (age <= 5):
                         if(Math.floor(Math.random()*1000) <= list[4]) {
-                            die("child mortality");
+                            die("under 5 mortality which affects nearly " + list[4] + " of every 1000 children");
                         }
                         break;
                         
                     //life expectancy * 1/4
                     case (age < list[2] / 4):
                         if(Math.floor(Math.random()*100000) <= 17) {
-                            die("death before 1/4 life expectancy");
+                            die("natural death");
                         }
                         break;
                         
+                    //life expectancy * 1/4 + 10
                     case (age < (list[2] / 4) + 10):
                         if(Math.floor(Math.random()*100000) <= 80) {
-                            die("death before 1/4 life expectancy + 10");
+                            die("natural death");
                         }
                         break;
                         
                     //life expectancy * 1/2
                     case (age < (list[2] / 2)):
                         if(Math.floor(Math.random()*100000) <= 101) {
-                            die("death before 1/2 life expectancy");
+                            die("natural death");
                         }
                         
                         break;
                         
                     case (age < (list[2] / 2) + 10):
                         if(Math.floor(Math.random()*100000) <= 192) {
-                            die("death before 1/2 life expectancy + 10");
+                            die("natural death");
                         }
                         
                         break;
@@ -142,14 +124,14 @@
                     //life expectancy * 3/4
                     case (age < (list[2] * 3 / 4)):
                         if(Math.floor(Math.random()*100000) <= 424) {
-                            die("death before 3/4 life expectancy");
+                            die("natural death");
                         }
                         
                         break;
                         
                     case (age < (list[2] * 3 / 4) + 10):
                         if(Math.floor(Math.random()*100000) <= 906) {
-                            die("death before 3/4 life expectancy + 10");
+                            die("natural death");
                         }
                         
                         break;
@@ -157,20 +139,26 @@
                     //life expectancy
                     case (age < (list[2])):
                         if(Math.floor(Math.random()*100000) <= 2166) {
-                            die("death die at life expectancy");
+                            die("natural death");
                         }
                         break;
                     
                     case (age < (list[2]) + 10):
                         if(Math.floor(Math.random()*100000) <= 5291) {
-                            die("death die at life expectancy + 10");
+                            die("natural death");
                         }
                         
                         break;
                         
                     case (age >= (list[2]) + 10):
                         if(Math.floor(Math.random()*100000) <= 13896) {
-                            die("death die at life expectancy + 10");
+                            die("natural death");
+                        }
+                        break;
+                    
+                    case (age >= 95):
+                        if(Math.floor(Math.random()*100<= 95)) {
+                            die("natural death at 95+ age")
                         }
                         break;
                 }
@@ -179,10 +167,57 @@
             function die(cause) {
                 document.getElementById("page4").style.display = 'none';
                 document.getElementById("passTime5x").style.display = 'none';
+                document.body.style.backgroundColor="white";
                 document.getElementById("page5").style.display = '';
-                document.getElementById("death").innerHTML = "\nYou succumbed to " + cause;
-                document.getElementById("deathDetails").innerHTML = "\nYou died at age " + age;
-
+                document.getElementById("death").innerHTML = "\nyou succumbed to " + cause;
+                document.getElementById("deathDetails").innerHTML = "\nyou died at age " + age + 
+                    " which is about " + Math.round((age)/(data[selectedCountry][selectedGender][2]) * 100) + " percent of the " + data[selectedCountry][selectedGender][2]+ " year life expectancy as a " + whoami(selectedCountry, selectedGender);
+            }
+            
+            function whoami(selectedCountry, selectedGender) {
+                if(selectedGender == 0) {
+                    switch(selectedCountry) {
+                        case 0:
+                            return "male from america";
+                            break;
+                        case 1:
+                            return "male from china";
+                            break;
+                        case 2:
+                            return "male from angola";
+                            break;
+                        case 3:
+                            return "male from bolivia";
+                            break;
+                        case 4:
+                            return "male from australia";
+                            break;
+                        case 5:
+                            return "male from sweden";
+                            break;                            
+                    }
+                } else if(selectedGender == 1) {
+                    switch(selectedCountry) {
+                        case 0:
+                            return "female from america";
+                            break;
+                        case 1:
+                            return "female from china";
+                            break;
+                        case 2:
+                            return "female from angola";
+                            break;
+                        case 3:
+                            return "female from bolivia";
+                            break;
+                        case 4:
+                            return "female from australia";
+                            break;
+                        case 5:
+                            return "female from sweden";
+                            break;                            
+                    }
+                }
             }
             
         </script>
@@ -190,18 +225,18 @@
     
     <body>
         
-        <div class="bgimg w3-display-container w3-animate-opacity w3-text-black">
+        <div class="main-bg-img w3-display-container w3-text-black">
             <div class="w3-display-topleft w3-padding-large w3-xlarge">
-                Hello
+                distilled lives
             </div>
             <div class="w3-display-middle" id="main">
-                <h1 class="w3-jumbo w3-animate-top nowrap">WELCOME TO THE GAME</h1>
+                <h1 class="w3-jumbo w3-animate-top nowrap">welcome to the game</h1>
                 <hr class="w3-border-grey" style="margin:auto;width:40%">
-                <p class="w3-large w3-center w3-animate-bottom"> <a href="javascript:startGame()">Click to begin. </a></p>
+                <p class="w3-large w3-center w3-animate-bottom"> <a href="javascript:startGame()">click to begin. </a></p>
                 
             </div>
             
-            <div class="w3-display-middle" id="page2">
+            <div class="w3-animate-opacity w3-display-middle" id="page2">
                 <a><img class="america" src="res/images/continents/na.png" onclick='chooseCountry(0)'/> </a><br/>
                 <a><img class="china" src="res/images/continents/asia.png" onclick='chooseCountry(1)'/></a><br/>
                 <a><img class="angola" src="res/images/continents/africa.png" onclick='chooseCountry(2)'/></a><br/>
@@ -211,32 +246,33 @@
                 <a><img class="sweden" src="res/images/continents/eur.png" onclick='chooseCountry(6)'/></a>
             </div>
             
-            <div class="w3-display-middle" id="page3">
-                <a><img class="male" src="res/images/male.jpg" onclick='chooseGender(0)'/> </a><br/>
-                <a><img class="female" src="res/images/female.jpg" onclick='chooseGender(1)'/> </a>
+            <div class="w3-animate-opacity main-bg-img w3-display-middle" id="page3">
+                <a><img class="male" src="res/images/genders/male.png" onclick='chooseGender(0)'/> </a><br/>
+                <a><img class="female" src="res/images/genders/female.png" onclick='chooseGender(1)'/> </a>
 
             </div>
             
-            <div class="w3-display-middle" id="page4">
-                <div id="ageDesc">You were born <br></div>
-                <a href="javascript:passTime()"> Continue... </a>
+            <div class="w3-animate-opacity w3-display-middle w3-large" id="page4">
+                <div id="ageDesc">you were born <br></div>
+                <a href="javascript:passTime()"> continue... </a>
                 <div id="passTime5x">
-                    <a href="javascript:passTime5x()"> Pass more time </a>
+                    <a href="javascript:passTime5x()"> pass more time... </a>
                 </div>
-                <div id="event1">Hello</div>
+                <div id="event1">hello</div>
                 
             </div>
             
             
-            <div class="w3-display-middle" id="page5">
-                You have died.
-                 <div id="death">cause <br></div>
-                 <div id="deathDetails"> </div>
+            <div class="w3-display-middle w3-large" id="page5">
+                you have died.
+                <div id="death">cause <br></div>
+                <div id="deathDetails"> </div>
+                <a href="index.html" target="_self"> distill another life </a>
 
             </div>
             
             <div class="w3-display-bottomleft w3-padding-large">
-                An art project by <a href="http://google.com" target="_blank">esau kang</a>
+                an art project by <a href="about/index.html" target="_self">esau kang</a>
             </div>
         </div>
         

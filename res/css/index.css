@@ -1,9 +1,15 @@
 body {font-family: "Raleway", sans-serif}
 h1 {font-family: "Raleway", sans-serif}
-body {height: 100%}
+body {
+    height: 100%;
+    background-color: #D8DBE2;
+}
 html {height: 100%}
-.bgimg {
-    background-color: #A9BCD0;
+.main-bg-img {
+    min-height: 100%;
+}
+.test-bg-img {
+    background-color: aqua;
     min-height: 100%;
 }
 .nowrap {
@@ -76,19 +82,19 @@ html {height: 100%}
 .male {
     height: auto;
     width: auto;
-    max-height: 50px;
-    max-width: 50px;
+    max-height: 888px;
+    max-width: 888px;
     position: absolute;
-    right: 100px;
+    right: -200px;
+    top: 25px;
 }
 .female {
     height: auto;
     width: auto;
-    max-height: 50px;
-    max-width: 50px;
+    max-height: 888px;
+    max-width: 888px;
     position: absolute;
-    left: 100px;
-    top: -5px;
+    left: -200px;
 }
 .continue { 
     background-color: #4CAF50;

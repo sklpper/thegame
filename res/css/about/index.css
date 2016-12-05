@@ -1,0 +1,17 @@
+body {font-family: "Raleway", sans-serif}
+h1 {font-family: "Raleway", sans-serif}
+body {
+    height: 100%;
+    background-color: #7EBDC3;
+}
+html {height: 100%}
+.main-bg-img {
+    min-height: 100%;
+}
+.test-bg-img {
+    background-color: aqua;
+    min-height: 100%;
+}
+.nowrap {
+    white-space: nowrap;
+}
